@@ -1,5 +1,5 @@
 import React from "react";
-import {createUser} from "../../api/authentification";
+import {createUser, register} from "../../api/authentification";
 
 
 export default function Register() {
@@ -12,7 +12,7 @@ export default function Register() {
         const email = form.querySelector('input[name="email"]').value;
         const password = form.querySelector('input[name="password"]').value;
 
-        await createUser(email, password);
+        await register(email, password);
 
         // Change état
         this._connected = true;
