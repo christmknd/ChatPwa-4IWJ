@@ -3,7 +3,6 @@ import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 import { getAuth } from 'firebase/auth';
-require('dotenv').config();
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -11,18 +10,18 @@ require('dotenv').config();
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    databaseURL: process.env.FIREBASE_DATABASE_URL,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.FIREBASE_APP_ID,
-    measurementId: process.env.FIREBASE_MEASUREMENT_ID
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export default const analytics = getAnalytics(app);
-export default const database = getDatabase(app);
-export default const auth = getAuth(app);
+export const analytics = getAnalytics(app);
+export const database = getDatabase(app);
+export const auth = getAuth(app);
