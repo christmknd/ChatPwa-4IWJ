@@ -1,13 +1,13 @@
 import './App.css';
 import React, {Component, useState} from 'react';
-import Login from './components/Login'
+import Home from './components/Home'
 import Room from "./components/Room";
 
 function App() {
     const [isConnect,setIsConnect] = useState(false)
   return (
     <div className="App">
-        {isConnect ? <Room/> : <Login/> }
+        {isConnect ? <Room/> : <Home/> }
     </div>
   );
 }
