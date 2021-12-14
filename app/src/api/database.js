@@ -2,8 +2,6 @@ import { ref, push, set, onValue } from "firebase/database";
 import {database} from "./configFirebase"
 
 
-
-
 export function createTodo(todo = {}) {
     const messages = ref(database, '/messages');
     const newKey = push(messages).key;

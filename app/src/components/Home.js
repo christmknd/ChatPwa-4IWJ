@@ -4,7 +4,7 @@ import Register from "./Anonyme/Register";
 import {createTodo, createUser} from "../api/database";
 
 function Home() {
-
+console.log(process.env)
     {
         return (
             <>

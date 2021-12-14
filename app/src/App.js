@@ -10,6 +10,7 @@ function App() {
         {isConnect ? <Room/> : <Home/> }
     </div>
   );
+
 }
 
 export default App;

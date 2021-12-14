@@ -1,17 +1,18 @@
 import React from 'react';
 import Salon from './Salon'
+import Chat from './Chat'
 
 function Room(){
 
     return (
-        <html>
-        <body>
+        <>
+
         <h1>Bienvenue sur le chat 4IWJ</h1>
 
         <Salon></Salon>
+        <Chat></Chat>
 
-        </body>
-        </html>
+        </>
     )
 }
 

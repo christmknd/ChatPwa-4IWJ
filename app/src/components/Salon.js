@@ -1,16 +1,14 @@
 import React from 'react';
-import {getUser} from '../api/authentification'
 
 function Salon (){
     return (
-        <html>
-        <section>
+        <>
+
             <ul>
-                <a href="#user1"></a>
-                <a href="#use2"></a>
+               <li><a href="#">User 1</a></li>
+               <li><a href="#"> User 2</a></li>
             </ul>
-        </section>
-        </html>
+        </>
     )
 }
 
