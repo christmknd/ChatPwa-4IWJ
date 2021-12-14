@@ -1,18 +1,7 @@
-import { ref, push, set, onChildAdded, onValue } from "firebase/database";
-import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
-import auth from "./configFirebase"
-import database from "./configFirebase"
+import { ref, push, set, onValue } from "firebase/database";
+import {database} from "./configFirebase"
 
 
-
-export function createUser(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password)
-        .then(({ user: { uid, email } }) => {
-            set(ref(database, `/users/${uid}`), {
-                email
-            });
-        });
-}
 
 
 export function createTodo(todo = {}) {
