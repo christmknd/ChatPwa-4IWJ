@@ -15,6 +15,7 @@ export function createMessage(idUserFrom, idUserTo, content, dateTime, isReceive
 }
 
 // Ecoute le chemin /message et récupere les messages
+// Stocke en Local (onlyOnce)
 export function getMessagesOnValue() {
     const todos = [];
 
@@ -31,6 +32,8 @@ export function getMessagesOnValue() {
                 });
             });
             resolve(todos);
+        },{
+            onlyOnce: true
         });
     });
 }
@@ -49,12 +52,3 @@ export function getMessages() {
     });
 }
 
-export function getMessagesLocal() {
-    return onValue(getRefMessages(), (snapshot) => {
-        let messages = (snapshot.val()) || 'Anonymous';
-        return messages;
-    }, {
-        onlyOnce: true
-    });
-
-}

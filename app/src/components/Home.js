@@ -2,12 +2,7 @@ import React, {useState} from 'react';
 import Login from "./Anonyme/Login";
 import Register from "./Anonyme/Register";
 import {
-    createMessage,
-    createTodo,
-    createUser,
-    getMessages,
-    getMessagesBis,
-    getMessagesLocal
+    createMessage, getMessagesOnValue
 } from "../api/database/message";
 
 function Home() {
@@ -21,7 +16,11 @@ function Home() {
                     alert("createMessage");
                 }}/>
                 <button title={'Press'} onClick={() => {
-                    console.log(getMessagesLocal());
+                    console.log(getMessagesOnValue());
+                    alert("getMessagesBis");
+                }}/>
+                <button title={'Press'} onClick={() => {
+                    console.log(getMessagesOnValue().once());
                     alert("getMessagesBis");
                 }}/>
                 <Register/>
