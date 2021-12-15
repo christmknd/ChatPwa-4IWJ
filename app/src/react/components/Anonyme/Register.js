@@ -8,7 +8,7 @@ export default function Register() {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
 
-    const {actions, selectors} = useContext(UserContext);
+    const {actions} = useContext(UserContext);
 
     const handleChangePseudo = (event) => {
         setPseudo(event.target.value);
@@ -30,18 +30,22 @@ export default function Register() {
         console.log("password is "+password);
 
         // Change User
-        const user =  await register(email, password).then((user) => {console.log(user)});
+        const user = await register(pseudo, email, password);
+        console.log("afterRegister")
+        console.log(user)
         if (user){
-            console.log("Conexion réussis")
-            await actions.setUser(user)
+            console.log("Inscription réussis")
+            actions.setUser(user)
             // Change état
-            await actions.setIsConnect();
-            console.log(selectors.getIsConnect())
+            actions.setIsConnect();
         }
         else {
-            console.log("Conexion échoué")
+            console.log("Inscription échoué")
             setPassword("");
         }
+
+
+
     }
 
 
@@ -59,7 +63,7 @@ export default function Register() {
                 </label><br/>
                 <label>
                     Password :
-                    <input type="password" name="password" value={password} onChange={handleChangePassword}  />
+                    <input type="password" name="password" minLength={6} value={password} onChange={handleChangePassword}  />
                 </label><br/>
                 <input type="submit" value="Envoyer" />
             </form>

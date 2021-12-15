@@ -23,7 +23,8 @@ export default function Login() {
         console.log("password is "+password);
 
         // Change User
-        const user = await login(email, password).then((user) => {console.log(user)});
+        const user = await login(email, password);
+        console.log(user)
         if (user){
             console.log("Conexion réussis")
             await actions.setUser(user)
@@ -32,6 +33,7 @@ export default function Login() {
             console.log(selectors.getIsConnect())
         }
         else {
+            alert("Identifiant ou mot de passe incorrect")
             console.log("Conexion échoué")
             setPassword("");
         }
