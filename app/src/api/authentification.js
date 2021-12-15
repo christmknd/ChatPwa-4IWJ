@@ -57,7 +57,6 @@ ui.start('#firebaseui-auth-container-auth', uiConfig);
 export function login(email, password) {
     console.log("login")
     console.log(email)
-    console.log(auth)
     return signInWithEmailAndPassword(auth, email, password)
         .then(({ user }) => {
             console.log(user)
@@ -80,12 +79,18 @@ export function logout() {
 //// REGISTER
 
 
-export function register(email, password) {
+export function register(pseudo, email, password) {
+    console.log("register")
+    console.log(pseudo)
     return createUserWithEmailAndPassword(auth, email, password)
-        .then(({ user: { uid, email } }) => {
-            set(ref(database, `/users/${uid}`), {
-                email
+        .then((userCredential) => {
+            set(ref(database, `users/${userCredential.user.uid}`), {
+                email, password, pseudo
             });
+            console.log(userCredential)
+            console.log(userCredential.user)
+            return userCredential.user;
+
         });
 }
 
