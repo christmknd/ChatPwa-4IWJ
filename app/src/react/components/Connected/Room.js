@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Salon from './Salon'
 import Chat from './Chat'
 import {Grid} from "@mui/material";
@@ -10,6 +10,8 @@ function Room(){
     const {selectors} = useContext(UserContext);
     console.log("Room")
     let user3 = {}
+    const [userLocal, setUserLocal] = useState({})
+
 
 
     async function getUser() {
@@ -42,10 +44,15 @@ function Room(){
             <Grid item md={10}>
                 <Box mb={4}>
                     <h2>Bienvenue </h2>
-                    <Salon/>
+                    <Salon
+                        userLocal = {userLocal}
+                        setUserLocal = {setUserLocal}
+                    />
                 </Box>
                 <Box mb={4}>
-                    <Chat/>
+                    <Chat
+                        userLocal = {userLocal}
+                    />
                 </Box>
             </Grid>
         </Grid>
