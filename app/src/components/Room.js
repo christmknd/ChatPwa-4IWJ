@@ -2,6 +2,7 @@ import React from 'react';
 import Salon from './Salon'
 import Chat from './Chat'
 import {Grid} from "@mui/material";
+import {Box} from "@material-ui/core";
 
 function Room(){
 
@@ -18,9 +19,15 @@ function Room(){
                 alignItems: "center",
             }}
         >
+            <h1>Bienvenue dans le Chat 4IWJ</h1>
+
             <Grid item md={10}>
-                <Salon/>
-                <Chat/>
+                <Box mb={4}>
+                    <Salon/>
+                </Box>
+                <Box mb={4}>
+                    <Chat/>
+                </Box>
             </Grid>
         </Grid>
 
