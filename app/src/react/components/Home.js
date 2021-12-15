@@ -5,6 +5,7 @@ import {getUser, IsConnect} from "../../api/database/user";
 import {logout } from "../../api/authentification";
 import Room from "./Connected/Room";
 import UserContext from "../context/UserContext";
+import {getMessages} from "../../api/database/message";
 
 function Home() {
 
@@ -15,8 +16,8 @@ function Home() {
             <>
                 <h1>Bienvenue sur le chat 4IWJ</h1>
                 <button onClick={() => {
-                    console.log(getUser());
-                }}>getUser</button>
+                    console.log(getMessages());
+                }}>getMessages</button>
                 <button onClick={() => {
                     console.log(IsConnect());
                 }}>IsConnect</button>
