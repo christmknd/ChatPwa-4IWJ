@@ -56,9 +56,7 @@ function Salon({userLocal,setUserLocal}) {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                           <ul>
-                               {listUser(user)}
-                           </ul>
+                           <ul>{listUser(user)}</ul>
                         </TableBody>
                     </Table>
                 </TableContainer>

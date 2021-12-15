@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import {register} from "../../../api/authentification";
 import UserContext from "../../context/UserContext";
+import {Card, CardContent} from "@material-ui/core";
 
 
 export default function Register() {
@@ -50,23 +51,26 @@ export default function Register() {
 
 
     return(
-        <>
+        <Card>
             <h2>Register</h2>
-            <form method="post" onSubmit={handleSubmit}>
-                <label>
-                    Pseudo :
-                    <input type="text" name="pseudo" value={pseudo} onChange={handleChangePseudo} />
-                </label><br/>
-                <label>
-                    Email :
-                    <input type="email" name="email" value={email} onChange={handleChangeEmail} />
-                </label><br/>
-                <label>
-                    Password :
-                    <input type="password" name="password" minLength={6} value={password} onChange={handleChangePassword}  />
-                </label><br/>
-                <input type="submit" value="Envoyer" />
-            </form>
-        </>
+            <CardContent>
+                <form method="post" onSubmit={handleSubmit}>
+                    <label>
+                        Pseudo :
+                        <input type="text" name="pseudo" value={pseudo} onChange={handleChangePseudo} />
+                    </label><br/>
+                    <label>
+                        Email :
+                        <input type="email" name="email" value={email} onChange={handleChangeEmail} />
+                    </label><br/>
+                    <label>
+                        Password :
+                        <input type="password" name="password" minLength={6} value={password} onChange={handleChangePassword}  />
+                    </label><br/>
+                    <input type="submit" value="Envoyer" />
+                </form>
+            </CardContent>
+        </Card>
+
     );
 }

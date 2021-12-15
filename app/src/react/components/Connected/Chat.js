@@ -39,7 +39,7 @@ function Chat({userTo}) {
         const mess =  getMessagesOnValue();
         const messag = []
 
-        mess.then((value) => {
+        await mess.then((value) => {
             value.map((mes) => {
                 if ((mes.data.idUserFrom === user.uid) && (mes.data.idUserTo === userTo.key)) messag.push(mes);
             });
@@ -83,6 +83,7 @@ function Chat({userTo}) {
     return (
         <Card>
             <h2>User : {userTo.data.pseudo}</h2>
+            <h2>Conversation</h2>
             <CardContent>
                 <Box>
                     <form method="post" onSubmit={handleSubmit}>
