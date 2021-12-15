@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import {login} from "../../../api/authentification";
 import UserContext from "../../context/UserContext";
+import {Card, CardContent} from "@mui/material";
 
 export default function Login() {
     const [email,setEmail] = useState("")
@@ -41,22 +42,22 @@ export default function Login() {
 
 
     return(
-        <>
+        <Card mb={4}>
             <h2>Login</h2>
-            <form method="post" onSubmit={handleSubmit}>
-                <label>
-                    Email :
-                    <input type="email" name="email" value={email} onChange={handleChangeEmail} />
-                </label><br/>
-                <label>
-                    Password :
-                    <input type="password" name="password" value={password} onChange={handleChangePassword}  />
-                </label><br/>
-                <input type="submit" value="Envoyer" />
-            </form>
-            <div id="firebaseui-auth-container-auth"></div>
-            <div id="loader">Loading...</div>
-        </>
+            <CardContent>
+                <form method="post" onSubmit={handleSubmit}>
+                    <label>
+                        Email :
+                        <input type="email" name="email" value={email} onChange={handleChangeEmail} />
+                    </label><br/>
+                    <label>
+                        Password :
+                        <input type="password" name="password" value={password} onChange={handleChangePassword}  />
+                    </label><br/>
+                    <input type="submit" value="Envoyer" />
+                </form>
+            </CardContent>
+        </Card>
     );
 
 }
