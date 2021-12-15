@@ -1,4 +1,4 @@
-import {ref, push, set, onValue, child, get} from "firebase/database";
+import {ref, push, set, onValue, child, get, remove, increment, update, onDisconnect} from "firebase/database";
 import {database} from "../configFirebase"
 
 function getRefMessages(url="") {
@@ -22,14 +22,12 @@ export function getMessagesOnValue() {
     return new Promise(resolve => {
         onValue(getRefMessages(), (snapshots) => {
             console.log('snapshots');
-            console.log(snapshots);
             snapshots.forEach(snapshot => {
-                console.log(snapshot.key);
-                console.log(snapshot.val());
                 todos.push({
                     key: snapshot.key,
                     data: snapshot.val()
                 });
+                console.log(todos)
             });
             resolve(todos);
         },{
@@ -38,7 +36,7 @@ export function getMessagesOnValue() {
     });
 }
 
-//
+// Recupere Messages
 export function getMessages() {
     const refMessages = ref(database);
     get(child(refMessages, `messages/`)).then((snapshot) => {
@@ -51,4 +49,25 @@ export function getMessages() {
         console.error(error);
     });
 }
+
+
+// Delete Message
+export function deleteMessageId(IdKey) {
+    remove(getRefMessages(IdKey));
+}
+
+
+// Add One Like to Message
+export function likeMessage(uid, key) {
+    const updates = {};
+    updates[`message/${key}/like`] = increment(1);
+    update(ref(database), updates)
+}
+
+// Message de deconnexion
+export function messageOnDisconnect(){
+    const presenceRef = ref(database, "disconnectmessage");
+    onDisconnect(presenceRef).set("I disconnected!");
+}
+
 

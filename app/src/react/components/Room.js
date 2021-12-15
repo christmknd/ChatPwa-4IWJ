@@ -1,6 +1,6 @@
 import React from 'react';
-import Salon from './Salon'
-import Chat from './Chat'
+import Salon from '../../components/Salon'
+import Chat from '../../components/Chat'
 import {Grid} from "@mui/material";
 import {Box} from "@material-ui/core";
 
@@ -30,7 +30,6 @@ function Room(){
                 </Box>
             </Grid>
         </Grid>
-
     )
 }
 
