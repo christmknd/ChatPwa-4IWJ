@@ -38,12 +38,14 @@ function Salon() {
 
 
     const listUser = (list) => {
-        return(
-            list.map((mes) =>(
-                    <li key={mes.key}> {mes.data.pseudo} </li>
+        if(list.length > 0) {
+            return(
+                list.map((mes) =>(
+                        <li key={mes.key}> {mes.data.pseudo} </li>
+                    )
                 )
             )
-        )
+        }
     }
 
 
