@@ -1,15 +1,17 @@
 import './App.css';
-import React, {Component, useState} from 'react';
-import Home from './components/Home'
-import Room from "./components/Room";
+import React, { useContext } from 'react';
+import Home from './react/components/Home'
+import Room from "./react/components/Room";
+import UserContext, {UserProvider} from "./react/context/UserContext";
 
 function App() {
-    const [isConnect,setIsConnect] = useState(false)
-  return (
-    <div className="App">
-        {isConnect ? <Room/> : <Home/> }
-    </div>
-  );
+    return (
+        <UserProvider>
+            <div className="App">
+                <Home/>
+            </div>
+        </UserProvider>
+    );
 }
 
 export default App;
