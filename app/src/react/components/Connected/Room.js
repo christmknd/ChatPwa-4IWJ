@@ -4,26 +4,17 @@ import Chat from './Chat'
 import {Grid} from "@mui/material";
 import {Box} from "@material-ui/core";
 import UserContext from "../../context/UserContext";
-import {getUsername} from "../../../api/database/user";
+import {getTimeLatence, getUsername} from "../../../api/database/user";
+import {getMessagesOnValue} from "../../../api/database/message";
 
 function Room(){
     const {selectors} = useContext(UserContext);
+    const user = selectors.getUser()
     console.log("Room")
-    let user3 = {}
-    const [userLocal, setUserLocal] = useState({})
+    console.log(user)
 
 
-
-    async function getUser() {
-        console.log("getUser")
-        const user = await selectors.getUser();
-        console.log(user)
-        console.log(user.uid)
-        user3 = await getUsername(user.uid);
-    }
-
-
-
+    const [userLocal, setUserLocal] = useState(null)
 
 
 
@@ -43,16 +34,16 @@ function Room(){
         >
             <Grid item md={10}>
                 <Box mb={4}>
-                    <h2>Bienvenue </h2>
+                    <h2>Bienvenue {user.email}</h2>
                     <Salon
                         userLocal = {userLocal}
                         setUserLocal = {setUserLocal}
                     />
                 </Box>
                 <Box mb={4}>
-                    <Chat
-                        userLocal = {userLocal}
-                    />
+                    {userLocal && <Chat
+                        userTo={userLocal}
+                    />}
                 </Box>
             </Grid>
         </Grid>

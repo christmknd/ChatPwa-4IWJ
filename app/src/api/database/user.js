@@ -47,6 +47,26 @@ export function getUserOnValue() {
     });
 }
 
+export function getUserOnValueById(id) {
+    const todos = [];
+
+    return new Promise(resolve => {
+        onValue(getRefUser(id), (snapshots) => {
+            console.log('snapshots');
+            snapshots.forEach(snapshot => {
+                todos.push({
+                    key: snapshot.key,
+                    data: snapshot.val()
+                });
+                console.log(todos)
+            });
+            resolve(todos);
+        },{
+            onlyOnce: true
+        });
+    });
+}
+
 // Recupere Username
 export function getUsername(email) {
     const refMessages = ref(database);
@@ -84,12 +104,16 @@ export function getLastTimeConnect() {
 }
 
 
+
 export function getTimeLatence() {
     const offsetRef = ref(database, ".info/serverTimeOffset");
-    onValue(offsetRef, (snap) => {
-        const offset = snap.val();
-        return (new Date().getTime() + offset);
+    return new Promise(resolve => {
+        onValue(offsetRef, (snap) => {
+            const offset = snap.val();
+            resolve (new Date().getTime() + offset);
+        });
     });
+
 }
 
 

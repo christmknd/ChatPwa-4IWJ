@@ -34,9 +34,8 @@ function Salon({userLocal,setUserLocal}) {
                 list.map((mes) =>(
                     <div>
                         <li key={mes.key}> {mes.data.pseudo} </li>
-                        <button onClick={ () => { setUserLocal(mes.data);
-                        console.log("userLocal")
-                            console.log(userLocal); } } name="button">Discuter</button>
+                        <button onClick={ () => { setUserLocal(mes);
+                        } } name="button">Discuter</button>
                     </div>
                     )
                 )
