@@ -13,11 +13,17 @@ import UserContext from "../../context/UserContext";
 import {login} from "../../../api/authentification";
 import {createMessage, getMessages, getMessagesOnValue} from "../../../api/database/message";
 
-function Chat() {
+function Chat({userTo}) {
+
+    const {selectors} = useContext(UserContext);
 
 
     const [content, setContent] = useState("")
     const [messages, setMessages] = useState({})
+
+    const user = selectors.getUser();
+    console.log("user")
+    console.log(user)
 
 
     function getMessage(){
@@ -37,7 +43,7 @@ function Chat() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        createMessage("idUserFrom", "idUserTo", content, "dateTime", false, false)
+        createMessage(user.uid, "userTo.uid", content, "dateTime", false, false)
         setContent("");
         console.log("messages")
 
@@ -70,10 +76,6 @@ function Chat() {
                         </label><br/>
                         <input type="submit" value="Envoyer"/>
                     </form>
-                    <p>List Message</p>
-                    <ul>
-                        {listMessage(messages)}
-                    </ul>
 
                     <TableContainer>
                         <TableHead>

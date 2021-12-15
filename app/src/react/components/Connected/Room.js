@@ -20,12 +20,7 @@ function Room(){
         user3 = await getUsername(user.uid);
     }
 
-    useEffect(()=>{
-        console.log("useEffect")
-        getUser()
-        console.log('user3')
-        console.log(user3)
-    })
+
 
 
 
