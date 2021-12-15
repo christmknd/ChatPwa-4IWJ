@@ -14,7 +14,7 @@ import {
 } from "firebase/database";
 
 function getRefUser(url="") {
-    return ref(database, `user/${url}`);
+    return ref(database, `users/${url}`);
 }
 
 
@@ -27,11 +27,30 @@ export function getUser() {
     });
 }
 
+export function getUserOnValue() {
+    const todos = [];
+
+    return new Promise(resolve => {
+        onValue(getRefUser(), (snapshots) => {
+            console.log('snapshots');
+            snapshots.forEach(snapshot => {
+                todos.push({
+                    key: snapshot.key,
+                    data: snapshot.val()
+                });
+                console.log(todos)
+            });
+            resolve(todos);
+        },{
+            onlyOnce: true
+        });
+    });
+}
 
 // Recupere Username
-export function getUsername(idUser) {
+export function getUsername(email) {
     const refMessages = ref(database);
-    get(child(refMessages, `users/${idUser}`)).then((snapshot) => {
+    get(child(refMessages, `users/${email}`)).then((snapshot) => {
         if (snapshot.exists()) {
             console.log("snapshot.val()");
             console.log(snapshot.val());
