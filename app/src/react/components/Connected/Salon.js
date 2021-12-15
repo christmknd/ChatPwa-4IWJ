@@ -2,22 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {
     Card,
     CardContent,
-    Link
+    Button
 } from "@mui/material";
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
 import {getUserOnValue} from "../../../api/database/user";
 
-function Salon() {
-
-    function createData(pseudo) {
-       return {pseudo};
-    }
-
-    const rows = [
-        createData('Alan'),
-        createData('Laura'),
-        createData('Jamie')
-    ];
+function Salon({userLocal,setUserLocal}) {
 
     const [user, setUser] = useState({})
 
@@ -34,6 +24,7 @@ function Salon() {
         getUserSalon();
         console.log("Value")
         console.log(user)
+
     },[])
 
 
@@ -41,7 +32,12 @@ function Salon() {
         if(list.length > 0) {
             return(
                 list.map((mes) =>(
+                    <div>
                         <li key={mes.key}> {mes.data.pseudo} </li>
+                        <button onClick={ () => { setUserLocal(mes.data);
+                        console.log("userLocal")
+                            console.log(userLocal); } } name="button">Discuter</button>
+                    </div>
                     )
                 )
             )
@@ -50,7 +46,6 @@ function Salon() {
 
 
     return (
-
         <Card>
             <h2>Salon de discussion</h2>
             <CardContent>
@@ -62,7 +57,9 @@ function Salon() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                           <ul>{listUser(user)}</ul>
+                           <ul>
+                               {listUser(user)}
+                           </ul>
                         </TableBody>
                     </Table>
                 </TableContainer>
