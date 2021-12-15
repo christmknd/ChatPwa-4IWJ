@@ -1,17 +1,11 @@
 import React from 'react';
 import {
-    Button,
     Card,
     CardContent,
-    CardActions,
     Grid,
-    makeStyles,
-    Box,
-    Typography,
-    TextField,
     Link
 } from "@mui/material";
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
+import {CardHeader, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
 
 
 function Salon (){
@@ -21,30 +15,27 @@ function Salon (){
     }
 
     const rows = [
-        createData('Alan', 'zfsfgsz', '15.12.21', 'yes','no'),
-        createData('Laura', 'Jambon Beure', '24.11.21', 'yes','yes'),
-        createData('Jamie', 'ok à toute', '19.10.21', 'yes','yes'),
+        createData('Alan', 'zfsfgsz', '15.12.21, 15:00', 'yes','no'),
+        createData('Laura', 'Jambon Beure', '24.11.21, 23:45', 'yes','yes'),
+        createData('Jamie', 'ok à toute', '19.10.21, 10:26', 'yes','yes'),
     ];
 
     return (
 
-        <Grid
-            container
-            justify="center"
-            align="center"
-            spacing={1}
-            style={{
-                width: "100%",
-                height: "100vh",
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
-            <Grid item md={10}>
                 <Card>
+                        <h2>Salon de discussion</h2>
                     <CardContent>
                         <TableContainer>
                             <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Username</TableCell>
+                                        <TableCell align="right">Heure</TableCell>
+                                        <TableCell align="right">Message</TableCell>
+                                        <TableCell align="right">Recu</TableCell>
+                                        <TableCell align="right">Lu</TableCell>
+                                    </TableRow>
+                                </TableHead>
                                 <TableBody>
                                     {rows.map((row) => (
                                                 <TableRow
@@ -64,10 +55,6 @@ function Salon (){
                         </TableContainer>
                     </CardContent>
                 </Card>
-            </Grid>
-        </Grid>
-
-
     )
 }
 
