@@ -27,7 +27,6 @@ export function getMessagesOnValue() {
                     key: snapshot.key,
                     data: snapshot.val()
                 });
-                console.log(todos)
             });
             resolve(todos);
         },{
@@ -42,6 +41,7 @@ export function getMessages() {
     get(child(refMessages, `messages/`)).then((snapshot) => {
         if (snapshot.exists()) {
             console.log(snapshot.val());
+            return snapshot.val();
         } else {
             console.log("No data available");
         }
