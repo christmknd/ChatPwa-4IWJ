@@ -33,6 +33,7 @@ export default function Login() {
             console.log(selectors.getIsConnect())
         }
         else {
+            alert("Identifiant ou mot de passe incorrect")
             console.log("Conexion échoué")
             setPassword("");
         }

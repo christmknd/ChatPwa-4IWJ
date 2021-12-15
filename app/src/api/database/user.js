@@ -1,6 +1,17 @@
 import {onAuthStateChanged} from "firebase/auth";
 import {auth, database} from "../configFirebase";
-import {ref, query, orderByChild, onValue, onDisconnect, serverTimestamp, push, set} from "firebase/database";
+import {
+    ref,
+    query,
+    orderByChild,
+    onValue,
+    onDisconnect,
+    serverTimestamp,
+    push,
+    set,
+    get,
+    child
+} from "firebase/database";
 
 function getRefUser(url="") {
     return ref(database, `user/${url}`);
@@ -13,6 +24,23 @@ export function getUser() {
             if (!user) resolve(false);
             resolve(user);
         });
+    });
+}
+
+
+// Recupere Username
+export function getUsername(idUser) {
+    const refMessages = ref(database);
+    get(child(refMessages, `users/${idUser}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+            console.log("snapshot.val()");
+            console.log(snapshot.val());
+            return snapshot.val();
+        } else {
+            console.log("No data available");
+        }
+    }).catch((error) => {
+        console.error(error);
     });
 }
 

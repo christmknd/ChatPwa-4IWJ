@@ -1,12 +1,9 @@
 import React, {useContext, useState} from 'react';
 import Login from "./Anonyme/Login";
 import Register from "./Anonyme/Register";
-import {
-    createMessage, deleteMessageId, getMessagesOnValue
-} from "../../api/database/message";
-import {getUser, IsConnect, systemConnect} from "../../api/database/user";
-import {login, logout, register} from "../../api/authentification";
-import Room from "./Room";
+import {getUser, IsConnect} from "../../api/database/user";
+import {logout } from "../../api/authentification";
+import Room from "./Connected/Room";
 import UserContext from "../context/UserContext";
 
 function Home() {

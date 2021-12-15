@@ -8,7 +8,7 @@ export default function Register() {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
 
-    const {actions, selectors} = useContext(UserContext);
+    const {actions} = useContext(UserContext);
 
     const handleChangePseudo = (event) => {
         setPseudo(event.target.value);
