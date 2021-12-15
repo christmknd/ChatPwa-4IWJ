@@ -60,7 +60,7 @@ function Chat() {
 
     return (
         <Card>
-            <h2>UserTo : Conversation</h2>
+            <h2>Conversation</h2>
             <CardContent>
                 <Box>
                     <form method="post" onSubmit={handleSubmit}>
