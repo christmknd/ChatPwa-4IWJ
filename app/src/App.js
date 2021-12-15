@@ -1,10 +1,11 @@
 import './App.css';
-import React, { useContext } from 'react';
+import React, {useContext, useState} from 'react';
 import Home from './react/components/Home'
-import Room from "./react/components/Room";
 import UserContext, {UserProvider} from "./react/context/UserContext";
 
 function App() {
+    const [isConnect,setIsConnect] = useState(true)
+
     return (
         <UserProvider>
             <div className="App">
